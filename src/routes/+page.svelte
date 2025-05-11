@@ -1,2 +1,16 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script lang="ts">
+	import { generatePrompt } from "$lib/generation/static/generation";
+
+  let prompt = $state('')
+
+function onClick() {
+    const generatedPrompt = generatePrompt();
+    prompt = generatedPrompt;
+}
+
+</script>
+
+<h1 class="text-3xl">Art prompt generator</h1>
+<p>Click the button to generate a random art prompt.</p>
+<button onclick={onClick} class="border-1 p-2 rounded-md cursor-pointer">Generate</button>
+<p>{prompt}</p>
